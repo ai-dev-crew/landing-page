@@ -4,7 +4,7 @@ The marketing site for Vertical Systems, a Vancouver, BC company that builds AI 
 
 ## Requirements
 
-- Node.js 22 or later (the app uses the built-in `node:sqlite` module).
+- Node.js 22.13 or later (the app uses the built-in `node:sqlite` module, which needs this version or newer).
 - npm.
 
 ## Getting started
@@ -34,7 +34,8 @@ The form sends a `POST` to `/api/contact` as JSON. The server checks each field 
 Responses:
 
 - `201` with `{ "ok": true, "id": <number> }` when the message is saved. The page then shows a thank-you message.
-- `400` with `{ "error": ..., "errors": ... }` when the JSON is invalid or a field is missing, too long, or not an email address.
+- `400` with `{ "error": "Invalid JSON" }` when the request body is not valid JSON.
+- `400` with `{ "error": "Validation failed", "errors": { ... } }` when a field is missing, too long, or not an email address. Each key in `errors` names a field.
 - `500` when the message cannot be saved.
 
 The database file defaults to `data/contacts.db`. Set `SQLITE_PATH` to use a different file. The folder is created if it does not exist. The `data/` folder is git-ignored, so submissions are never committed.
