@@ -46,6 +46,13 @@ test("form shows an error message", () => {
   expect(html).toContain("Invalid email");
 });
 
+test("form disables the submit button while sending", () => {
+  const html = renderToString(<ContactFormView status="sending" onSubmit={noop} />);
+
+  expect(html).toContain("disabled");
+  expect(html).toContain("Sending");
+});
+
 test("booking dialog embeds the calendar in a popup, closed by default", () => {
   expect(renderToString(<BookingDialog open={false} onClose={noop} />)).toBe("");
   const html = renderToString(<BookingDialog open onClose={noop} />);
