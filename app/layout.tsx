@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "AI Dev Crew",
-  description: "A small Next.js app built and tested by an AI dev crew.",
+  title: "Vertical Systems | AI employees",
+  description:
+    "Vertical Systems, Vancouver BC, builds AI employees and multi-agent systems.",
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
